@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearSight AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ClearSight AI</h1>
+        <form id="analysisForm">
+            <div class="form-group">
+                <label for="content">Text/HTML Content:</label>
+                <textarea id="content" name="content" rows="10" placeholder="Paste your text or HTML here..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="existing_alt_text">Existing Image Alt Text (if any):</label>
+                <input type="text" id="existing_alt_text" name="existing_alt_text" placeholder="e.g., 'A beautiful sunset'">
+            </div>
+            <button type="submit">Analyze Content</button>
+        </form>
+
+        <div id="results" style="display: none;">
+            <h2>Analysis Results</h2>
+            <h3>Text Analysis:</h3>
+            <pre id="textAnalysis"></pre>
+            <h3>Text Fixes:</h3>
+            <pre id="textFixes"></pre>
+            <h3>Image Analysis:</h3>
+            <pre id="imageAnalysis"></pre>
+            <h3>Image Fixes:</h3>
+            <pre id="imageFixes"></pre>
+
+            <!-- Example for one-click apply -->
+            <h3>One-Click Apply (Demonstration):</h3>
+            <div id="appliedContent"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

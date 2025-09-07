@@ -127,3 +127,32 @@ pre {
 #generateImageFromAltTextBtn:hover {
     background-color: #5a28ad;
 }
+
+.image-previews {
+    display        : flex;
+    justify-content: center;
+    /* Centers the images horizontally */
+    align-items    : flex-start;
+    /* Aligns items at the top */
+    gap            : 20px;
+    /* Adds space between the original and fixed images */
+    flex-wrap      : wrap;
+    /* Allows images to wrap on smaller screens */
+}
+
+.image-wrapper {
+    flex      : 1;
+    /* Allows each image container to take up equal space */
+    min-width : 300px;
+    /* Ensures the images don't get too small */
+    text-align: center;
+}
+
+.image-wrapper img {
+    max-width    : 100%;
+    height       : auto;
+    border       : 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow   : 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+}

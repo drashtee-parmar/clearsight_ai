@@ -1,73 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ClearSight AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>ClearSight AI</h1>
-        <form id="analysisForm">
-            <div class="form-group">
-                <label for="content">Text/HTML Content:</label>
-                <textarea id="content" name="content" rows="10" placeholder="Paste your text or HTML here..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="image">Upload Image:</label>
-                <input type="file" id="image" name="image" accept="image/*">
-            </div>
-            <div class="form-group">
-                <label for="existing_alt_text">Existing Image Alt Text (if any):</label>
-                <input type="text" id="existing_alt_text" name="existing_alt_text" placeholder="e.g., 'A beautiful sunset'">
-            </div>
-            <button type="submit">Analyze Content</button>
-        </form>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container upload-page">
+      <h1>ClearSight AI</h1>
+      <p>A smart editor for image compliance and accessibility.</p>
 
-        <div id="results" style="display: none;">
-            <h2>Analysis Results</h2>
-            <h3>Text Analysis:</h3>
-            <pre id="textAnalysis"></pre>
-            <h3>Text Fixes:</h3>
-            <pre id="textFixes"></pre>
-            <h3>Image Analysis:</h3>
-            <pre id="imageAnalysis"></pre>
-            <h3>Image Fixes:</h3>
-            <pre id="imageFixes"></pre>
+      <form id="analysis-form">
+        <h2>Text/HTML Content:</h2>
+        <textarea
+          id="text-content"
+          rows="10"
+          placeholder="Paste your text or HTML here..."
+        ></textarea>
 
-            <!-- Example for one-click apply -->
-            <h3>One-Click Apply (Demonstration):</h3>
-            <div id="appliedContent"></div>
+        <h2>Upload Image:</h2>
+        <input type="file" id="image-upload" accept="image/*" />
+
+        <h2>Existing Image Alt Text (if any):</h2>
+        <input
+          type="text"
+          id="existing-alt-text"
+          placeholder="Enter existing alt text..."
+        />
+
+        <button type="button" id="analyze-button">Analyze Content</button>
+      </form>
+
+      <div id="results-container">
+        <h2>Text Analysis</h2>
+        <pre id="text-analysis-output"></pre>
+        <div id="text-fixes-output" class="fixes-box"></div>
+
+        <h2>Image Analysis</h2>
+        <pre id="image-analysis-output"></pre>
+        <div id="image-fixes-output" class="fixes-box"></div>
+
+        <div id="image-display" style="display: none">
+          <div class="image-previews">
+            <div class="image-wrapper">
+              <h3>Original</h3>
+              <img id="original-image" src="" alt="Original Image" />
+            </div>
+            <div class="image-wrapper">
+              <h3>Fixed</h3>
+              <img id="fixed-image" src="#" alt="Fixed Image" />
+            </div>
+          </div>
         </div>
-
-        <!-- Image Analysis Results Section -->
-        <div id="imageAnalysisResults" style="display:none; margin-top: 20px;">
-            <h2>Image Accessibility Analysis</h2>
-            <div id="imageAltTextSufficiency" class="result-section"></div>
-            <div id="imageReasoning" class="result-section"></div>
-            <h3>Compliance Issues</h3>
-            <ul id="imageIssuesList"></ul>
-            <div class="suggested-alt-text-container">
-                <strong>Suggested Alt Text:</strong>
-                <span id="suggestedAltTextDisplay"></span>
-                <button id="generateImageFromAltTextBtn" style="margin-left: 10px; display:none;">Generate Image</button>
-                <div id="generatedImageContainer" style="margin-top: 10px; display:none;">
-                    <h4>Generated Image from Alt Text:</h4>
-                    <img id="generatedImage" src="" alt="Generated image" style="max-width: 100%; height: auto;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Text Analysis Results Section -->
-        <div id="textAnalysisResults" style="display:none; margin-top: 20px;">
-            <h2>Text Content Accessibility Analysis</h2>
-            <p id="textOverallSummary"></p>
-            <h3>Identified Issues</h3>
-            <div id="textIssuesContainer"></div>
-        </div>
+      </div>
     </div>
-
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearSight AI - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Complete</h1>
+        
+        <div class="image-previews">
+            <div class="image-wrapper">
+                <h3>Original</h3>
+                <img id="original-image" src="data:image/png;base64,{{ original_image_data }}" alt="Original Image">
+            </div>
+            <div class="image-wrapper">
+                <h3>Fixed</h3>
+                <img id="fixed-image" src="#" alt="Fixed Image">
+            </div>
+        </div>
+
+        <div id="results-container">
+            <h2>Compliance Report</h2>
+            <div id="report-list" class="report-list">
+                {% if report %}
+                    {% for issue in report %}
+                        <div class="issue-card">
+                            <h4>{{ issue.type.upper() }} Issue</h4>
+                            <p>{{ issue.description }}</p>
+                            <button class="fix-btn" data-prompt="{{ issue.fix_prompt }}">Fix with AI</button>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>✅ No issues found! Your content is fully compliant.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <a href="/" class="back-link">Analyze another image</a>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const originalImage = document.getElementById('original-image');
+            const fixedImage = document.getElementById('fixed-image');
+            const fixButtons = document.querySelectorAll('.fix-btn');
+            
+            fixButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const fixPrompt = this.getAttribute('data-prompt');
+                    this.textContent = 'Applying...';
+                    this.disabled = true;
+
+                    try {
+                        const response = await fetch('/apply-fix', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ fix_prompt: fixPrompt })
+                        });
+                        
+                        const data = await response.json();
+                        if (response.ok) {
+                            fixedImage.src = 'data:image/png;base64,' + data.fixed_image_data;
+                            this.textContent = 'Fixed!';
+                        } else {
+                            alert(data.error);
+                            this.textContent = 'Failed';
+                        }
+                    } catch (error) {
+                        console.error('Fetch error:', error);
+                        alert('An error occurred. Please try again.');
+                        this.textContent = 'Fix with AI';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -11,6 +11,7 @@ pip install google-generativeai # For Gemini API
 pip install python-dotenv # For managing API keys
 pip install html-sanitizer # For PII/privacy basic hygiene
 pip install lxml # For more robust HTML/XML parsing (if needed)
+pip install fal-client
 ```
 ### OR 
 

@@ -1,16 +1,16 @@
 body {
-    font-family: sans-serif;
-    margin: 20px;
+    font-family     : sans-serif;
+    margin          : 20px;
     background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 900px;
-    margin: auto;
-    background: #fff;
-    padding: 30px;
+    max-width    : 900px;
+    margin       : auto;
+    background   : #fff;
+    padding      : 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow   : 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -18,27 +18,29 @@ body {
 }
 
 label {
-    display: block;
+    display      : block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight  : bold;
 }
 
-textarea, input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+textarea,
+input[type="text"],
+input[type="file"] {
+    width        : 100%;
+    padding      : 10px;
+    border       : 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing   : border-box;
 }
 
 button {
     background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    color           : white;
+    padding         : 10px 15px;
+    border          : none;
+    border-radius   : 4px;
+    cursor          : pointer;
+    font-size       : 16px;
 }
 
 button:hover {
@@ -46,16 +48,82 @@ button:hover {
 }
 
 #results {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
+    margin-top : 30px;
+    border-top : 1px solid #eee;
     padding-top: 20px;
 }
 
 pre {
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    border          : 1px solid #ddd;
+    padding         : 10px;
+    border-radius   : 4px;
+    white-space     : pre-wrap;
+    word-wrap       : break-word;
+}
+
+
+/* Add to your style.css or <style> block */
+.result-section {
+    margin-bottom   : 10px;
+    padding         : 8px;
+    border-left     : 4px solid #007bff;
+    /* Example blue border */
+    background-color: #f8f9fa;
+}
+
+#imageIssuesList {
+    list-style-type: disc;
+    margin-left    : 20px;
+    padding-left   : 0;
+}
+
+.text-issue-card {
+    border          : 1px solid #ddd;
+    padding         : 15px;
+    margin-bottom   : 15px;
+    border-radius   : 5px;
+    background-color: #fff;
+    box-shadow      : 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.text-issue-card h4 {
+    margin-top: 0;
+    color     : #dc3545;
+    /* Example red for issues */
+}
+
+.text-issue-card p {
+    margin-bottom: 5px;
+}
+
+.fix-it-btn {
+    background-color: #28a745;
+    /* Green */
+    color           : white;
+    padding         : 8px 15px;
+    border          : none;
+    border-radius   : 4px;
+    cursor          : pointer;
+    font-size       : 0.9em;
+    margin-top      : 10px;
+}
+
+.fix-it-btn:hover {
+    background-color: #218838;
+}
+
+#generateImageFromAltTextBtn {
+    background-color: #6f42c1;
+    /* Purple */
+    color           : white;
+    padding         : 8px 15px;
+    border          : none;
+    border-radius   : 4px;
+    cursor          : pointer;
+    font-size       : 0.9em;
+}
+
+#generateImageFromAltTextBtn:hover {
+    background-color: #5a28ad;
 }

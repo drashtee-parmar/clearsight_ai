@@ -40,6 +40,32 @@
             <h3>One-Click Apply (Demonstration):</h3>
             <div id="appliedContent"></div>
         </div>
+
+        <!-- Image Analysis Results Section -->
+        <div id="imageAnalysisResults" style="display:none; margin-top: 20px;">
+            <h2>Image Accessibility Analysis</h2>
+            <div id="imageAltTextSufficiency" class="result-section"></div>
+            <div id="imageReasoning" class="result-section"></div>
+            <h3>Compliance Issues</h3>
+            <ul id="imageIssuesList"></ul>
+            <div class="suggested-alt-text-container">
+                <strong>Suggested Alt Text:</strong>
+                <span id="suggestedAltTextDisplay"></span>
+                <button id="generateImageFromAltTextBtn" style="margin-left: 10px; display:none;">Generate Image</button>
+                <div id="generatedImageContainer" style="margin-top: 10px; display:none;">
+                    <h4>Generated Image from Alt Text:</h4>
+                    <img id="generatedImage" src="" alt="Generated image" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Analysis Results Section -->
+        <div id="textAnalysisResults" style="display:none; margin-top: 20px;">
+            <h2>Text Content Accessibility Analysis</h2>
+            <p id="textOverallSummary"></p>
+            <h3>Identified Issues</h3>
+            <div id="textIssuesContainer"></div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

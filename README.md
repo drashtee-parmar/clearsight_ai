@@ -12,6 +12,13 @@ pip install python-dotenv # For managing API keys
 pip install html-sanitizer # For PII/privacy basic hygiene
 pip install lxml # For more robust HTML/XML parsing (if needed)
 ```
+### OR 
+
+## Install all packages at once
+```
+pip install -r requirements.txt
+```
+
 ## Create virtual environment
 ```
 python3 -m venv venv
